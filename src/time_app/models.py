@@ -32,7 +32,8 @@ class Idolo(models.Model):
 
     def __str__(self):
         return f'{self.nome} - {self.posicao}'
-        
+
+
 class Time(models.Model):
     id_time = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_time = models.CharField(max_length=200)
