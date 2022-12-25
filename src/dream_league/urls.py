@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from time_app.api import viewsets as timesviewset
+from competicao_app.api import viewsets as competicaoviewset
 route = routers.DefaultRouter()
 route.register(r'times',timesviewset.TimeViewSet, basename="times")
 route.register(r'idolo', timesviewset.IdoloViewSet, basename="idolos")
+route.register(r'competicao', competicaoviewset.CompeticaoViewSet, basename='competicoes')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
