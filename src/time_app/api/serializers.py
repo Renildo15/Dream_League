@@ -9,6 +9,7 @@ class IdoloSerializers(serializers.ModelSerializer):
     
 
 class TimeSerializers(serializers.ModelSerializer):
+    idolo = IdoloSerializers(many=True, read_only=True)
     class Meta:
         model = Time
-        fields = '__all__'
+        fields = ['id_time', 'nome_time', 'num_jogadores','titulos', 'total_titulos', 'idolo', 'escudo', 'federacao', 'nome_estadio', 'ano_fundacao']

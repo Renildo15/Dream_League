@@ -36,6 +36,13 @@ class Idolo(models.Model):
 
 
 class Time(models.Model):
+
+    fed = (
+        ('FRF', 'FRF'),
+        ('FMH', 'FMH'),
+        ('FHV', 'FHV')
+    )
+
     id_time = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_time = models.CharField(max_length=200)
     num_jogadores = models.IntegerField(default=0)
@@ -43,6 +50,7 @@ class Time(models.Model):
     total_titulos = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
     idolo = models.ManyToManyField(Idolo, blank=True)
     escudo = models.ImageField(null=True, blank=True)
+    federacao = models.CharField(max_length=200, choices=fed, null=True, blank=True)
     nome_estadio = models.CharField(max_length=200)
     ano_fundacao = models.PositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(datetime.now().year)],help_text="Use the following format: <YYYY>")
     
