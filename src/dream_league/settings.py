@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'time_app',
+    'competicao_app',
     'rest_framework'
 ]
 
