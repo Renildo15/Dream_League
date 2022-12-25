@@ -3,7 +3,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime
 from uuid import uuid4
 from competicao_app.models import Competicao
-
+from jogadores_app.models import Jogador
 # Create your models here.
 
 class Idolo(models.Model):
@@ -46,6 +46,7 @@ class Time(models.Model):
     id_time = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_time = models.CharField(max_length=200)
     num_jogadores = models.IntegerField(default=0)
+    jogadores = models.ManyToManyField(Jogador,blank=True)
     titulos = models.ManyToManyField(Competicao,blank=True)
     total_titulos = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
     idolo = models.ManyToManyField(Idolo, blank=True)
