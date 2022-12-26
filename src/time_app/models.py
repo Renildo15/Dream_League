@@ -46,7 +46,6 @@ class Time(models.Model):
     id_time = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_time = models.CharField(max_length=200)
     num_jogadores = models.IntegerField(default=0)
-    jogadores = models.ManyToManyField(Jogador,blank=True)
     titulos = models.ManyToManyField(Competicao,blank=True)
     total_titulos = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
     idolo = models.ManyToManyField(Idolo, blank=True)
@@ -54,7 +53,7 @@ class Time(models.Model):
     federacao = models.CharField(max_length=200, choices=fed, null=True, blank=True)
     nome_estadio = models.CharField(max_length=200)
     ano_fundacao = models.PositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(datetime.now().year)],help_text="Use the following format: <YYYY>")
-    
+    jogadores = models.ManyToManyField(Jogador,blank=True)
 
 
     def __str__(self):
