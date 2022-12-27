@@ -1,7 +1,6 @@
 from django.db import models
 from uuid import uuid4
 from django.core.validators import MaxValueValidator, MinValueValidator 
-#from time_app.models import Time
 # Create your models here.
 
 class Jogador(models.Model):
@@ -34,6 +33,6 @@ class Jogador(models.Model):
     status = models.CharField(max_length=200, choices=status_choice)
     gols = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(0), MaxValueValidator(2000)])
     assistencias = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(0), MaxValueValidator(2000)])
-    time = models.ForeignKey('time_app.Time', blank=True, null=True, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.nome_jogador

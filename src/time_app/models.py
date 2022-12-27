@@ -53,7 +53,8 @@ class Time(models.Model):
     federacao = models.CharField(max_length=200, choices=fed, null=True, blank=True)
     nome_estadio = models.CharField(max_length=200)
     ano_fundacao = models.PositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(datetime.now().year)],help_text="Use the following format: <YYYY>")
-  
+    jogadores = models.ManyToManyField(Jogador,blank=True)
+
 
     def __str__(self):
 
