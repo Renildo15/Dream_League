@@ -5,6 +5,9 @@ from uuid import uuid4
 
 # Create your models here.
 
+def upload_image_escudo(instance, filename):
+    return f'{instance.id_time} - {filename}'
+
 class Time(models.Model):
 
     fed = (
@@ -17,7 +20,7 @@ class Time(models.Model):
     nome_time = models.CharField(max_length=200)
     num_jogadores = models.IntegerField(default=0)
     total_titulos = models.PositiveIntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
-    escudo = models.ImageField(null=True, blank=True)
+    escudo = models.ImageField(upload_to=upload_image_escudo,null=True, blank=True)
     federacao = models.CharField(max_length=200, choices=fed, null=True, blank=True)
     nome_estadio = models.CharField(max_length=200)
     ano_fundacao = models.PositiveIntegerField(validators=[MinValueValidator(1900), MaxValueValidator(datetime.now().year)],help_text="Use the following format: <YYYY>")

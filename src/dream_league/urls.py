@@ -19,6 +19,8 @@ from rest_framework import routers
 from time_app.api import viewsets as timesviewset
 from competicao_app.api import viewsets as competicaoviewset
 from jogadores_app.api import viewsets as jogadoresviewset
+from django.conf.urls.static import static
+from django.conf import settings
 
 route = routers.DefaultRouter()
 route.register(r'times',timesviewset.TimeViewSet, basename="times")
@@ -29,4 +31,4 @@ route.register(r'jogadores', jogadoresviewset.JogadoresViewSet, basename="jogado
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(route.urls))
-]
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
