@@ -28,5 +28,5 @@ route.register(r'jogadores', jogadoresviewset.JogadoresViewSet, basename="jogado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(route.urls))
+    path('api/v1/', include(route.urls))
 ]
