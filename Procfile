@@ -1,1 +1,0 @@
-web: python manage.py migrate && gunicorn dream_league.wsgi
