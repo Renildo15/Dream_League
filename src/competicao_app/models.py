@@ -6,6 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Titulo(models.Model):
     id_competicao = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_competicao = models.CharField(max_length=200)
+    num_times = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(1), MaxValueValidator(100)])
     num_titulos = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(1), MaxValueValidator(100)])
     emblema = models.ImageField(null=True, blank=True)
     temporada = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(1), MaxValueValidator(100)])
