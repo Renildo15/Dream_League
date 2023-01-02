@@ -4,8 +4,15 @@ from uuid import uuid4
 from django.core.validators import MaxValueValidator, MinValueValidator 
 # Create your models here.
 class Titulo(models.Model):
+
+    choice_tipo = (
+        ('Liga', 'Liga'),
+        ('Copa', 'Copa'),
+        ('Copa Internacional', 'Copa Internacional')
+    )
     id_competicao = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome_competicao = models.CharField(max_length=200)
+    tipo = models.CharField(max_length=200, choices=choice_tipo, null=True, blank=True)
     num_times = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(1), MaxValueValidator(100)])
     num_titulos = models.PositiveIntegerField(null=True,blank=True, validators=[MinValueValidator(1), MaxValueValidator(100)])
     emblema = models.ImageField(null=True, blank=True)
