@@ -1,10 +1,18 @@
 from rest_framework import serializers
-from competicao_app.models import Titulo
+from competicao_app.models import Campeonato, Campeao
+
+
+class CampeaoSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Campeao
+        fields = ['id_campeao','campeao','num_titulos', 'campeonato']
 
 
 class CompeticaoSerializers(serializers.ModelSerializer):
-    campeoes = serializers.StringRelatedField()
+    campeao = CampeaoSerializers(many=True, read_only=True)
+    campeao= serializers.StringRelatedField(many=True)
     class Meta:
-        model = Titulo
-        fields = ['id_competicao', 'nome_competicao', 'tipo','num_times', 'num_titulos', 'emblema', 'temporada', 'regras', 'campeoes']
+        model = Campeonato
+        fields = ['id_competicao', 'nome_competicao', 'tipo','num_times', 'emblema', 'temporada', 'regras','campeao']
+        
         
