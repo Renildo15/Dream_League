@@ -5,7 +5,7 @@ from competicao_app.models import Campeonato, Campeao
 class CampeaoSerializers(serializers.ModelSerializer):
     class Meta:
         model = Campeao
-        fields = ['id_campeao','campeao','num_titulos', 'campeonato']
+        fields = ['id_campeao','time_campeao','num_titulos', 'campeonato']
 
 
 class CompeticaoSerializers(serializers.ModelSerializer):
