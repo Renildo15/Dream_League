@@ -26,6 +26,7 @@ route = routers.DefaultRouter()
 route.register(r'times',timesviewset.TimeViewSet, basename="times")
 route.register(r'idolo', timesviewset.IdoloViewSet, basename="idolos")
 route.register(r'competicao', competicaoviewset.CompeticaoViewSet, basename='competicoes')
+route.register(r'campeoes',competicaoviewset.CampeaoViewSet, basename="campeoes")
 route.register(r'jogadores', jogadoresviewset.JogadoresViewSet, basename="jogadores")
 
 urlpatterns = [
